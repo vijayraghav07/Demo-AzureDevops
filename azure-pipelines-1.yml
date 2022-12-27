@@ -10,17 +10,10 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: '**/*.csproj'
+  solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Free Trial(ce6bcc62-114e-41dd-9733-2fb49649b24a)'
-    appType: 'webApp'
-    WebAppName: 'Test75786'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/.zip'
+
 steps:
 - task: NuGetToolInstaller@1
 
@@ -34,3 +27,11 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Free Trial(ce6bcc62-114e-41dd-9733-2fb49649b24a)'
+    appType: 'webApp'
+    WebAppName: 'Test75786'
+    packageForLinux: '$(System.DefaultWorkingDirectory)*.zip'
