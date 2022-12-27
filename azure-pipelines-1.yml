@@ -13,7 +13,7 @@ variables:
   solution: '**/*.slncsproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-- task: AzureRmWebAppDeployment@4
+- task: AzureRmWebAppDeployment
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Free Trial(ce6bcc62-114e-41dd-9733-2fb49649b24a)'
