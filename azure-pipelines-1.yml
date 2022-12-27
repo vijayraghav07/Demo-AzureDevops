@@ -10,10 +10,16 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: '**/*.sln'
+  solution: '**/*.slncsproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Free Trial(ce6bcc62-114e-41dd-9733-2fb49649b24a)'
+    appType: 'webApp'
+    WebAppName: 'Test75786'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/.zip'
 steps:
 - task: NuGetToolInstaller@1
 
