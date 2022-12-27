@@ -13,6 +13,7 @@ variables:
   solution: '**/*.csproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
