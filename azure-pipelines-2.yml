@@ -34,5 +34,5 @@ stages:
        azureSubscription: 'Free Trial(1)(ce6bcc62-114e-41dd-9733-2fb49649b24a)'
        appType: 'webApp'
        WebAppName: 'Test75786'
-       VirtualApplication: 'Weatherdemo'
-       packageForLinux: '$(System.DefaultWorkingDirectory)*.zip'
+       VirtualApplication: 'Test75786'
+       packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
